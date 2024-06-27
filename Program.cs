@@ -16,14 +16,15 @@ namespace smtp
             otp = rand.Next(111,999);
 
 
-            MailMessage mailMessage = new MailMessage
-            {
-                From = new MailAddress(fmail),
-                Subject = "OTP",
-                IsBodyHtml = true,
-                Body = "<html><body>hi this is your otp: " + otp + "</body></html>"
-            };
+            MailMessage mailMessage = new MailMessage();
+
+            mailMessage.From = new MailAddress(fmail);
+            mailMessage.Subject = "OTP";
+            mailMessage.IsBodyHtml = true;
+            mailMessage.Body = "<html><body>hi this is your otp: " + otp + "</body></html>";
             mailMessage.To.Add(new MailAddress("tarunrk2002@gmail.com"));
+        
+            
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com") {
             Port = 587,
             Credentials = new NetworkCredential(fmail, pass_fmail),
